@@ -19,7 +19,7 @@ jobs: #trabalhos do workflow que podem run em paralelo
     - name: Set up Go
       uses: actions/setup-go@v4 #usando
       with: #passa variaveis para a action setup-go@v4
-        go-version: '1.22'
+        go-version: '1.20'
 
     - name: Inicia banco
       run: docker compose up -d postgres
@@ -27,8 +27,8 @@ jobs: #trabalhos do workflow que podem run em paralelo
     - name: Lint
       uses: golangci/golangci-lint-action@v6
       with:
-          version: v1.59
+          version: v1.60
           args: controllers/ database/ models/ routes/     
 
     - name: Test
-      run: go test -v main_teste.go
+      run: go get test -v main_teste.go
